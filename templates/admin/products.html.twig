@@ -1,0 +1,15 @@
+{% extends  "admin/home.html.twig"%}
+
+{% block main %}
+
+    
+            {% for product in products %}
+                <h1>{{ product.name }}</h1>
+                <p><h2>{{ product.description }}</h2></p>
+                <h3>{{ product.price }}</h3>
+                <h3>{{ product.stock }}</h3>
+                <hr>
+            {% endfor %}
+        
+	
+{% endblock %}

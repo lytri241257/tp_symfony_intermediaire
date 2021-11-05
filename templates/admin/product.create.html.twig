@@ -1,0 +1,20 @@
+{%extends"front/home.html.twig" %}
+
+{% block main %}
+
+      {{form_start(productForm)}}
+
+                  {{ form_label(productForm.name, 'Nom') }}
+                  {{ form_widget(productForm.name) }}
+                  {{ form_widget(productForm.description) }}
+                  {{ form_widget(productForm.price) }}
+                  {{ form_widget(productForm.stock) }}
+                  {{ form_widget(productForm.category) }}
+                  {{ form_widget(productForm.submit) }}
+
+      {{form_end(productForm)}}
+
+      {% endfor %}
+{% endblock %}
+
+{% endblock %}
