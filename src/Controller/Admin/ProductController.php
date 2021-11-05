@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class ProductController extends AbstractController
       // fonction qui créer un nouveau produit
 
 /**
-     * @Route("admin/create/Product/", name="product_create")
+     * @Route("admin/create/product/", name="admin_create_product")
      */
     public function productCreate(Request $request, EntityManagerInterface $entityManagerInterface ){
 
@@ -56,10 +57,10 @@ class ProductController extends AbstractController
             return $this->redirectToRoute("admin_list_product");
         };
 
-        return $this->render('admin/product.create.html.twig', ['productform' => $productForm->createView() ]);
+        return $this->render('admin/product.create.html.twig', ['productForm' => $productForm->createView() ]);
     }
        /**
- * @Route("bdd/update/product/{id}", name="product_update")
+ * @Route("admin/update/product/{id}", name="admin_update_product")
  */
     public function productUpdate($id, Request $request, productRepository $productRepository, EntityManagerInterface $entityManagerInterface)
     {
@@ -74,10 +75,10 @@ class ProductController extends AbstractController
             // flush enregistre dans la base de données.
             $entityManagerInterface->flush();
 
-            return $this->redirectToRoute("product_list");
+            return $this->redirectToRoute("admin_list_product");
         };
 
-        return $this->render('admin/product.update.html.twig', ['productform' => $productForm->createView() ]);
+        return $this->render('admin/product.create.html.twig', ['productForm' => $productForm->createView() ]);
     }
 
     /**

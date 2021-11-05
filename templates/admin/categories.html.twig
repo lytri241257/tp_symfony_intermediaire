@@ -2,10 +2,18 @@
 
 {% block main %}
 
+    <h1> Liste des categories </h1>
 
-    <h1> Liste des produits </h1>
+		{% for categorie in categories %}
     
 			<h2>{{ categorie.name }}</h2>
 			<p><h3>{{ categorie.description }}</h3></p>
+			<hr>
+				<a href="{{ path('admin_update_categorie', {'id' : categorie.id }) }}">Modifier la catégorie</a>
+            	<a href="{{ path('admin_delete_categorie', {'id' : categorie.id}) }}">Supprimer la categorie</a>
+                
+		
+        {% endfor %}
+	
+{% endblock main %}
 
-{% endblock %}

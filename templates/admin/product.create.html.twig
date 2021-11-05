@@ -6,15 +6,18 @@
 
                   {{ form_label(productForm.name, 'Nom') }}
                   {{ form_widget(productForm.name) }}
+                  {{ form_label(productForm.description, 'Description') }}
                   {{ form_widget(productForm.description) }}
+                  {{ form_label(productForm.price, 'Prix') }}
                   {{ form_widget(productForm.price) }}
+                  {{ form_label(productForm.stock, 'Stock') }}
                   {{ form_widget(productForm.stock) }}
-                  {{ form_widget(productForm.category) }}
+                  {{ form_label(productForm.categorie, 'Categorie') }}
+                  {{ form_widget(productForm.categorie) }}
                   {{ form_widget(productForm.submit) }}
 
       {{form_end(productForm)}}
 
-      {% endfor %}
+      
 {% endblock %}
 
-{% endblock %}

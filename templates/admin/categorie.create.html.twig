@@ -1,0 +1,18 @@
+{% extends "admin/home.html.twig" %}
+
+{% block main %}
+	
+    {{ form_start(categorieForm) }}
+
+	{{ form_label(categorieForm.name, 'Nom') }}
+	{{ form_widget(categorieForm.name, {'attr' : {'placeholder' : 'Le nom de la catégorie'} } ) }}
+	{{ form_label(categorieForm.description, 'Description') }}
+	{{ form_widget(categorieForm.description, {'attr' : {'placeholder' : 'La description de la catégorie'} } ) }}
+    {{ form_widget(categorieForm.submit) }}
+
+	{{ form_end(categorieForm) }}
+
+{% endblock %}
+
+ 
+

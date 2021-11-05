@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Categorie;
 use App\Form\CategorieType;
@@ -29,11 +29,11 @@ class CategorieController extends AbstractController
     public function categorieShow($id, CategorieRepository $categorieRepository)
     {
         $categorie = $categorieRepository->find($id);
-        return $this->render('admin/category.html.twig', ['categorie' => $categorie]);
+        return $this->render('admin/categorie.html.twig', ['categorie' => $categorie]);
     }
 
     /**
-     * @Route("/update/category/{id}", name="category_update")
+     * @Route("admin/update/categorie/{id}", name="admin_update_categorie")
      */
     public function categorieUpdate(
         $id,
@@ -43,7 +43,7 @@ class CategorieController extends AbstractController
     ) {
         $categorie = $categoryRepository->find($id);
 
-        $categorieForm = $this->createForm(CategorrieType::class, $categorie);
+        $categorieForm = $this->createForm(CategorieType::class, $categorie);
 
         $categorieForm->handleRequest($request);
 
@@ -54,11 +54,11 @@ class CategorieController extends AbstractController
             return $this->redirectToRoute('categories_list');
         }
 
-        return $this->render('admin/update_categorie.html.twig', ['categoryForm' => $categorieForm->createView()]);
+        return $this->render('admin/categorie.create.html.twig', ['categorieForm' => $categorieForm->createView()]);
     }
 
     /**
-     * @Route("/create/category", name="category_create")
+     * @Route("admin/create/categorie/", name="admin_create_categorie")
      */
     public function categorieCreate(
         Request $request,
@@ -66,7 +66,7 @@ class CategorieController extends AbstractController
     ) {
         $categorie = new Categorie();
 
-        $categorieForm = $this->createForm(CategoryType::class, $categorie);
+        $categorieForm = $this->createForm(CategorieType::class, $categorie);
 
         $categorieForm->handleRequest($request);
 
@@ -77,11 +77,11 @@ class CategorieController extends AbstractController
             return $this->redirectToRoute('categories_list');
         }
 
-        return $this->render('admin/update_category.html.twig', ['categoryForm' => $categorieForm->createView()]);
+        return $this->render('admin/categorie.create.html.twig', ['categorieForm' => $categorieForm->createView()]);
     }
 
     /**
-     * @Route("delete/category/{id}", name="delete_category")
+     * @Route("admin/delete/categorie/{id}", name="admin_delete_categorie")
      */
     public function deleteCategory($id, CategorieRepository $categorieRepository, EntityManagerInterface $entityManagerInterface)
     {
